@@ -24,9 +24,9 @@ while True:
         print('get out of bed')
         break
 while True:
-    guess = input("Yes or no, go downstairs?").lower()
+    downstairs = input("Yes or no, go downstairs?").lower()
 
-    if guess == "yes":
+    if downstairs == "yes":
         print("Eat Breakfast")
         break
     else:
@@ -34,27 +34,27 @@ while True:
         print("Eat Breakfast")
         break
 while True:
-    guess = input("Waffles or Pancakes?").lower()
-    
-    if guess == "Waffles":
+    breakfast_choice = input("Waffles or Pancakes?").lower()
+
+    if breakfast_choice == "Waffles":
         print('Eat Waffles')
         break
-    elif guess == "Pancakes":
+    elif breakfast_choice == "Pancakes":
         print('Eat Pancakes')
         break
 print('Shower')
 print('Get dressed')
 while True:
-    guess = input("Yes or no, Is it cold outside").lower()
-    if guess == "yes":
+    temp = input("Yes or no, Is it cold outside").lower()
+    if temp == "yes":
         print("wear pants")
         break
     else:
         print("wear shorts")
         break
 while True:
-    guess = input("Yes or no, Is it cold enough to wear a sweatshirt?").lower()
-    if guess == "yes":
+    sweatshirt = input("Yes or no, Is it cold enough to wear a sweatshirt?").lower()
+    if sweatshirt == "yes":
         print("Wear sweatshirt")
         break
     else:
