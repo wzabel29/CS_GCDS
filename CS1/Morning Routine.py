@@ -1,4 +1,24 @@
+from tkinter import*
+from tkinter.ttk import*
+
+from time import strftime
+
+root = Tk()
+root.title("clock")
+
+def time():
+    string = strftime('%H:%M:%S %p')
+    label.config(text = string)
+    label.after(1000, time)
+
+label = Label(root, font=(150), background = "cyan", foreground = "black")
+label.pack(anchor = "center")
+time()
+
+mainloop()
+
 import time
+
 print ("Alarm!")
 
 while True:
@@ -25,19 +45,21 @@ while True:
         break
     else:
         print("Please enter either yes or no")
+
 while True:
     downstairs = input("Yes or no, go downstairs?").lower()
 
     if downstairs == "yes":
         print("Eat Breakfast")
         break
-    elif downstairs == "np":
+    elif downstairs == "no":
         print("Go to Bathroom")
         time.sleep(1)
         print("Eat Breakfast")
         break
     else:
         print("Please enter either yes or no")
+
 while True:
     breakfast_choice = input("Waffles or Pancakes?").lower()
 
@@ -49,9 +71,11 @@ while True:
         break
     else:
         print("Please enter either Pancakes or Waffles")
+
 print('Shower')
 time.sleep(1)
 print('Get dressed')
+
 while True:
     temp = input("Yes or no, Is it cold outside").lower()
 
@@ -63,6 +87,7 @@ while True:
         break
     else:
         print("Please enter either yes or no")
+
 while True:
     sweatshirt = input("Yes or no, Is it cold enough to wear a sweatshirt?").lower()
 
@@ -76,5 +101,7 @@ while True:
         print("Please enter either yes or no")
 
 print("pack back")
+time.sleep(1)
 print("drive to school")
+time.sleep(1)
 print("Arrive at school")
