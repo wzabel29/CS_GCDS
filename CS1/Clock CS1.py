@@ -11,7 +11,7 @@ def time():
     label.config(text = string)
     label.after(1000, time)
 
-label = Label(root, font=(150), background = "cyan", foreground = "black")
+label = Label(root, font=(80), background = "cyan", foreground = "black")
 label.pack(anchor = "center")
 time()
 
