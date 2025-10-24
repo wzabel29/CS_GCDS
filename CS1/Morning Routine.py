@@ -59,11 +59,11 @@ print(current_time.strftime("%H:%M:%S"))
 while True:
     breakfast_choice = input("Waffles or Pancakes?").lower()
 
-    if breakfast_choice == "Waffles":
+    if breakfast_choice == "waffles":
         print('Eat Waffles')
         current_time += datetime.timedelta(minutes=10)
         break
-    elif breakfast_choice == "Pancakes":
+    elif breakfast_choice == "pancakes":
         print('Eat Pancakes')
         current_time += datetime.timedelta(minutes=10)
         break
