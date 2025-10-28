@@ -1,4 +1,4 @@
-from tkinter import*
+""" from tkinter import*
 from tkinter.ttk import*
 
 from time import strftime
@@ -16,3 +16,18 @@ label.pack(anchor = "center")
 time()
 
 mainloop()
+ """
+from datetime import datetime, timedelta
+
+specific_time = datetime(2025, 1, 1, 10, 0, 0) # January 1, 2025, 10:00:00 AM
+current_time = datetime.now() # The current date and time
+
+specific_time += timedelta(minutes=5)
+print(specific_time.strftime("%H:%M:%S"))
+
+if current_time > specific_time:
+    print("The current time is past the specific time.")
+elif current_time < specific_time:
+    print("The current time is before the specific time.")
+else:
+    print("The current time is exactly the same as the specific time.")
