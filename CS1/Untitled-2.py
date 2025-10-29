@@ -1,2 +1,6 @@
-x = 2.2729373993739373937338373837202416282
-x * y = 20
+from tictactoe_helper import draw_board
+
+
+spots = {1 : '1', 2 : '2', 3 : '3', 4 : '4', 5 : '5', 6 : '6', 7 : '7', 8 : '8', 9 : '9'}
+
+draw_board(spots)
