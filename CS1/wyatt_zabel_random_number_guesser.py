@@ -1,4 +1,5 @@
 import random
+import time
 
 random_int = random.randint(1, 1000)
 guesses = 5
@@ -15,4 +16,6 @@ while guesses > 0:
         break
     guesses -= 1
 
-print("number was {random_int}")
+print("number was")
+time.sleep(1)
+print({random_int})
