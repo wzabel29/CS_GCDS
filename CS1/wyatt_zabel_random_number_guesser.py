@@ -1,11 +1,11 @@
 import random
 import time
 
-random_int = random.randint(1, 1000)
+random_int = random.randint(1, 100)
 guesses = 5
 
 while guesses > 0:
-    number = int(input('Guess a number 1-1000'))
+    number = int(input('Guess a number 1-100'))
 
     if number > random_int:
         print(f"number to high! Try again. {guesses-1} guesses left.")
@@ -18,4 +18,4 @@ while guesses > 0:
 
 print("number was")
 time.sleep(1)
-print({random_int})
+print(random_int)
