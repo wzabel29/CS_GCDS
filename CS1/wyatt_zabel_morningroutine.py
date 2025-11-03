@@ -1,8 +1,8 @@
 import time
 from datetime import datetime, timedelta
-print ("Alarm!")
+print ("Alarm!")                                                                    #disply: Alarm!
 
-current_time = datetime(2025, 10, 24, 6, 30, 0) 
+current_time = datetime(2025, 10, 24, 6, 30, 0)                                     #set current time (the date) to 10/24/1025 ^:30
 print(current_time.strftime("%H:%M:%S"), end='\r')
 
 while True:
