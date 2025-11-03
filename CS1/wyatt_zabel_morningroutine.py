@@ -1,136 +1,136 @@
 import time
 from datetime import datetime, timedelta
-print ("Alarm!")                                                                    #disply: Alarm!
+print ("Alarm!")                                                                    #disply
 
-current_time = datetime(2025, 10, 24, 6, 30, 0)                                     #set current time (the date) to 10/24/1025 ^:30
-print(current_time.strftime("%H:%M:%S"), end='\r')
+current_time = datetime(2025, 10, 24, 6, 30, 0)                                     #set current time (the date) to 10/24/1025 6:30
+print(current_time.strftime("%H:%M:%S"), end='\r')                                  #display current time as hour minute second
 
-while True:
-    snooze = input("Yes or No, Would you like to snooze?").lower()
+while True:                                                                         #forever loop
+    snooze = input("Yes or No, Would you like to snooze?").lower()                  #sets phrase snooze to users imput in lowercase
 
-    if snooze == "yes":
-        print("Go back to sleep")
-        time.sleep(2)
-        current_time += timedelta(minutes=5)
-    elif snooze == "no":
-        print("wake up!")
-        current_time += timedelta(minutes=1)
-        break
-    else:
-        print("Please enter yes or no")
+    if snooze == "yes":                                                             #if users input = yes do this
+        print("Go back to sleep")                                                   #display
+        time.sleep(2)                                                               #pause for 2 seconds
+        current_time += timedelta(minutes=5)                                        #add 5 minutes to the current time string
+    elif snooze == "no":                                                            #if user unput = no do this
+        print("wake up!")                                                           #display
+        current_time += timedelta(minutes=1)                                        #add 1 minute to the current time string
+        break                                                                       #break loop
+    else:                                                                           #if user input doe snot = yes or no do this
+        print("Please enter yes or no")                                             #display
 
+print(current_time.strftime("%H:%M:%S"))                                            #display current time string
+
+while True:                                                                         #display forever loop
+    phone = input("Yes or no, Look at phone?").lower()                              #set phrase phone to user input in lower case
+
+    if phone == "yes":                                                              #if user input = yes do this
+        print("stay in bed for 15 min")                                             #display
+        time.sleep(2)                                                               #pause for 2 seconds
+        print('get out of bed')                                                     #display
+        current_time += timedelta(minutes=15)                                       #add 15 minutes onto the current time string
+        break                                                                       #break loop
+    elif phone == "no":                                                             #if user input = no do this
+        print('get out of bed')                                                     #display
+        current_time += timedelta(minutes=1)                                        #add 1 minute to time string
+        break                                                                       #break loop
+    else:                                                                           #if user input does not equal yes or no do this
+        print("Please enter either yes or no")                                      #display
+
+print(current_time.strftime("%H:%M:%S"))                                            #display time string
+
+while True:                                                                         #forever loop
+    downstairs = input("Yes or no, go downstairs?").lower()                         #set phrase downstairs to user input in lowrcase
+
+    if downstairs == "yes":                                                         #if user input = yes do this
+        print("Eat Breakfast")                                                      #display
+        break                                                                       #break loop
+    elif downstairs == "no":                                                        #if user input = no do this
+        print("Go to Bathroom")                                                     #display
+        current_time += timedelta(minutes=1)                                        #add 1 minute to current time string
+        time.sleep(1)                                                               #pause for 1 second
+        print("Eat Breakfast")                                                      #display
+        break                                                                       #break loop
+    else:                                                                           #if user input does not = yes or no do this
+        print("Please enter either yes or no")                                      #display
+
+print(current_time.strftime("%H:%M:%S"))                                            #display current time string
+
+while True:                                                                         #forever loop
+    breakfast_choice = input("Waffles or Pancakes?").lower()                        #phrase breakfast_choice = user input lowercase
+
+    if breakfast_choice == "waffles":                                               #if user input = waffles do this
+        print('Eat Waffles')                                                        #display
+        current_time += timedelta(minutes=10)                                       #add 10 minutes to current time string
+        break                                                                       #break loop
+    elif breakfast_choice == "pancakes":                                            #if user input = pancakes do this
+        print('Eat Pancakes')                                                       #display
+        current_time += timedelta(minutes=10)                                       #add 10 minutes to current time string
+        break                                                                       #break loop
+    else:                                                                           #if user input does not = waffles or pancakes do this
+        print("Please enter either Pancakes or Waffles")                            #display
+
+print(current_time.strftime("%H:%M:%S"))                                            #display current time string
+
+print('Shower')                                                                     #display
+current_time += timedelta(minutes=10)                                               #add 10 minutes to current time string
+print(current_time.strftime("%H:%M:%S"))                                            #print current time string
+time.sleep(1)                                                                       #pause for 1 second
+print('Get dressed')                                                                #display
+current_time += timedelta(minutes=10)                                               #add 10 minutes to current time string
 print(current_time.strftime("%H:%M:%S"))
 
-while True:
-    phone = input("Yes or no, Look at phone?").lower()
+while True:                                                                         #forever loop
+    temp = input("Yes or no, Is it cold outside").lower()                           #phrase temp = user imput lowercase
 
-    if phone == "yes":
-        print("stay in bed for 15 min")
-        time.sleep(2)
-        print('get out of bed')
-        current_time += timedelta(minutes=15)
-        break
-    elif phone == "no":
-        print('get out of bed')
-        current_time += timedelta(minutes=1)
-        break
-    else:
-        print("Please enter either yes or no")
+    if temp == "yes":                                                               #if user input = yes do this
+        print("wear pants")                                                         #display
+        current_time += timedelta(minutes=1)                                        #add 1 minute to current time string
+        break                                                                       #break loop
+    elif temp == "no":                                                              #if user input = no do this
+        print("wear shorts")                                                        #display
+        current_time += timedelta(minutes=1)                                        #add 1 minute to current time string
+        break                                                                       #break loop
+    else:                                                                           #if user input does not = yes or no do this
+        print("Please enter either yes or no")                                      #display
 
-print(current_time.strftime("%H:%M:%S"))
+print(current_time.strftime("%H:%M:%S"))                                            #display current time string
 
-while True:
-    downstairs = input("Yes or no, go downstairs?").lower()
+while True:                                                                         #forever loop
+    sweatshirt = input("Yes or no, Is it cold enough to wear a sweatshirt?").lower()#phrase sweatshirt = user input lowercase
 
-    if downstairs == "yes":
-        print("Eat Breakfast")
-        break
-    elif downstairs == "no":
-        print("Go to Bathroom")
-        current_time += timedelta(minutes=1)
-        time.sleep(1)
-        print("Eat Breakfast")
-        break
-    else:
-        print("Please enter either yes or no")
+    if sweatshirt == "yes":                                                         #if user input = yes do this
+        print("Wear sweatshirt")                                                    #display
+        current_time += timedelta(minutes=1)                                        #add 1 minute to current time string
+        break                                                                       #break loop
+    elif sweatshirt == "no":                                                        #if user input = no do this
+        print("Don't wear a sweatshirt")                                            #display
+        current_time += timedelta(minutes=1)                                        #add 1 minute to current time string
+        break                                                                       #break loop
+    else:                                                                           #if user input does not = yes or no do this
+        print("Please enter either yes or no")                                      #display
 
-print(current_time.strftime("%H:%M:%S"))
+print(current_time.strftime("%H:%M:%S"))                                            #display current time string
 
-while True:
-    breakfast_choice = input("Waffles or Pancakes?").lower()
+print("pack back")                                                                  #display
+current_time += timedelta(minutes=1)                                                #add 1 minute to current time string
+print(current_time.strftime("%H:%M:%S"))                                            #display current time string
 
-    if breakfast_choice == "waffles":
-        print('Eat Waffles')
-        current_time += timedelta(minutes=10)
-        break
-    elif breakfast_choice == "pancakes":
-        print('Eat Pancakes')
-        current_time += timedelta(minutes=10)
-        break
-    else:
-        print("Please enter either Pancakes or Waffles")
+time.sleep(1)                                                                       #pause for 1 second
 
-print(current_time.strftime("%H:%M:%S"))
+print("drive to school")                                                            #display
+current_time += timedelta(minutes=10)                                               #add 10 minutes to current time string
 
-print('Shower')
-current_time += timedelta(minutes=10)
-print(current_time.strftime("%H:%M:%S"))
-time.sleep(1)
-print('Get dressed')
-current_time += timedelta(minutes=10)
-print(current_time.strftime("%H:%M:%S"))
+time.sleep(1)                                                                       #pause for 1 second
 
-while True:
-    temp = input("Yes or no, Is it cold outside").lower()
+print("Arrive at school")                                                           #display
+print(current_time.strftime("%H:%M:%S"))                                            #display current time string
 
-    if temp == "yes":
-        print("wear pants")
-        current_time += timedelta(minutes=1)
-        break
-    elif temp == "no":
-        print("wear shorts")
-        current_time += timedelta(minutes=1)
-        break
-    else:
-        print("Please enter either yes or no")
+check_time = datetime(2025, 10, 24, 8, 0, 0)                                        #set check time to time school starts
 
-print(current_time.strftime("%H:%M:%S"))
-
-while True:
-    sweatshirt = input("Yes or no, Is it cold enough to wear a sweatshirt?").lower()
-
-    if sweatshirt == "yes":
-        print("Wear sweatshirt")
-        current_time += timedelta(minutes=1)
-        break
-    elif sweatshirt == "no":
-        print("Don't wear a sweatshirt")
-        current_time += timedelta(minutes=1)
-        break
-    else:
-        print("Please enter either yes or no")
-
-print(current_time.strftime("%H:%M:%S"))
-
-print("pack back")
-current_time += timedelta(minutes=1)
-print(current_time.strftime("%H:%M:%S"))
-
-time.sleep(1)
-
-print("drive to school")
-current_time += timedelta(minutes=10)
-
-time.sleep(1)
-
-print("Arrive at school")
-print(current_time.strftime("%H:%M:%S"))
-
-check_time = datetime(2025, 10, 24, 8, 0, 0)
-
-if current_time == check_time:
-    print("you are on time")
-elif current_time  > check_time:
-    print("you are late")
-else:
-    print("you are early")
+if current_time == check_time:                                                      #if current time string = time school starts dxo this
+    print("you are on time")                                                        #display
+elif current_time  > check_time:                                                    #if current time string is greater than time school starts do this
+    print("you are late")                                                           #display
+else:                                                                               #if current time string does not = time school starts or greater than time school starts do this
+    print("you are early")                                                          #display
