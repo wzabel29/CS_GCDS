@@ -1,5 +1,10 @@
 import random                                                   #import                                                           
+import pygame
 
+pygame.init()
+
+pygame.SCREEN_WIDTH(800)
+pygame.SCREEN_HEIGHT(800)
 colors = {                                                      #color list
         'black': '\033[30m',                                    #black color
         'red': '\033[31m',                                      #red color
