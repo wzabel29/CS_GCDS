@@ -18,6 +18,12 @@ while True:
         time.sleep(1)
         print(f'Computer score is... {bot_score}.')
         time.sleep(1)
+        if person_score == 2:
+            print('you win! Congrats.')
+            break
+        elif bot_score == 2:
+            print('you lose. Good luck next time.')
+            break
         continue
     elif user_choice == 'rock' and bot_choice == 'paper':
         print('You lose  :(')
@@ -27,6 +33,12 @@ while True:
         time.sleep(1)
         print(f'Computer score is... {bot_score}.')
         time.sleep(1)
+        if person_score == 2:
+            print('you win! Congrats.')
+            break
+        elif bot_score == 2:
+            print('you lose. Good luck next time.')
+            break
     elif user_choice == 'rock' and bot_choice == 'scissors':
         print('You win!')
         person_score += 1
@@ -35,6 +47,12 @@ while True:
         time.sleep(1)
         print(f'Computer score is... {bot_score}.')
         time.sleep(1)
+        if person_score == 2:
+            print('you win! Congrats.')
+            break
+        elif bot_score == 2:
+            print('you lose. Good luck next time.')
+            break
     elif user_choice == 'paper' and bot_choice == 'rock':
         print('You win!')
         person_score += 1
@@ -43,6 +61,12 @@ while True:
         time.sleep(1)
         print(f'Computer score is... {bot_score}.')
         time.sleep(1)
+        if person_score == 2:
+            print('you win! Congrats.')
+            break
+        elif bot_score == 2:
+            print('you lose. Good luck next time.')
+            break
     elif user_choice == 'paper' and bot_choice == 'scissors':
         print('You lose  :(')
         bot_score += 1
@@ -51,6 +75,12 @@ while True:
         time.sleep(1)
         print(f'Computer score is... {bot_score}.')
         time.sleep(1)
+        if person_score == 2:
+            print('you win! Congrats.')
+            break
+        elif bot_score == 2:
+            print('you lose. Good luck next time.')
+            break
     elif user_choice == 'scissors' and bot_choice == 'paper':
         print('You win!')
         person_score += 1
@@ -59,6 +89,12 @@ while True:
         time.sleep(1)
         print(f'Computer score is... {bot_score}.')
         time.sleep(1)
+        if person_score == 2:
+            print('you win! Congrats.')
+            break
+        elif bot_score == 2:
+            print('you lose. Good luck next time.')
+            break
     elif user_choice == 'scissors' and bot_choice == 'rock':
         print('You lose  :(')
         bot_score += 1
@@ -67,6 +103,12 @@ while True:
         time.sleep(1)
         print(f'Computer score is... {bot_score}.')
         time.sleep(1)
+        if person_score == 2:
+            print('you win! Congrats.')
+            break
+        elif bot_score == 2:
+            print('you lose. Good luck next time.')
+            break
     elif person_score == 2:
         print('you win! Congrats.')
         break
