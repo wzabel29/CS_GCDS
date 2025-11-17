@@ -1,19 +1,19 @@
-import random
-import time
+import random                                                                   #import
+import time                                                                     #import
 
-choices = ['rock', 'paper', 'scissors']
-bot_score = 0
-person_score = 0
+choices = ['rock', 'paper', 'scissors']                                         #choices list
+bot_score = 0                                                                   #set computer score to 0
+person_score = 0                                                                #set person score to 0
 
-while True:
-    if person_score == 2:
-        print('you win! Congrats.')
-        break
-    elif bot_score == 2:
-        print('you lose. Good luck next time.')
-        break
-    else:
-        user_choice = input('Enter rock, paper, or scissors...').lower()
+while True:                                                                     #forever loop
+    if person_score == 2:                                                       #if person score = 2 do this
+        print('you win! Congrats.')                                             #display
+        break                                                                   #break loop
+    elif bot_score == 2:                                                        #if computer score = 2 do this
+        print('you lose. Good luck next time.')                                 #display
+        break                                                                   #break loop
+    else:                                                                       #else
+        user_choice = input('Enter rock, paper, or scissors...').lower()        
         bot_choice = random.choice(choices)
         print(f'your choice was... {user_choice}')
         print(f'computer choice is... {bot_choice}')
@@ -74,3 +74,5 @@ while True:
             time.sleep(1)
             print(f'Computer score is... {bot_score}.')
             time.sleep(1)
+        elif user_choice != 'rock' or 'paper' or 'scissors':
+            print('please enter rock, paper, or scissors')
