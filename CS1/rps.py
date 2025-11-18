@@ -1,78 +1,49 @@
-import random                                                                   #import
-import time                                                                     #import
+import random                                                               #import
+import time                                                                 #import
 
-choices = ['rock', 'paper', 'scissors']                                         #choices list
-bot_score = 0                                                                   #set computer score to 0
-person_score = 0                                                                #set person score to 0
+choices = ['rock', 'paper', 'scissors']                                     #choices list
+bot_score = 0                                                               #set computer score to 0
+person_score = 0                                                            #set person score to 0
 
-while True:                                                                     #forever loop
-    if person_score == 2:                                                       #if person score = 2 do this
-        print('you win! Congrats.')                                             #display
-        break                                                                   #break loop
-    elif bot_score == 2:                                                        #if computer score = 2 do this
-        print('you lose. Good luck next time.')                                 #display
-        break                                                                   #break loop
-    else:                                                                       #else
-        user_choice = input('Enter rock, paper, or scissors...').lower()        
-        bot_choice = random.choice(choices)
-        print(f'your choice was... {user_choice}')
-        print(f'computer choice is... {bot_choice}')
+while person_score < 2 and bot_score < 2:                                                                     #forever loop
+    user_choice = input('Enter rock, paper, or scissors...').lower()        #set user choice to input in lower case
+    
+    if user_choice not in choices:                                          #if user does not enter rock, paper, or scissors do this
+        print('please enter rock, paper, or scissors.')                     #display
+        continue                                                            #goes back to start of loop
+    bot_choice = random.choice(choices)                                     #bot choice is random from choices list
+    print(f'your choice was... {user_choice}')                              #display
+    print(f'computer choice is... {bot_choice}')                            #display
+    
+    if user_choice == bot_choice:                                           #if user choice and bot choice are the same do this
+        print('You tied. Go again.')                                        #display
+        continue                                                            #goes back to start of loop
+    elif user_choice == 'rock' and bot_choice == 'paper':                   #if user choice = rock and bot choice = paper do this
+        print('You lose  :(')                                               #display
+        bot_score += 1                                                      #add 1 to bot score
+    elif user_choice == 'rock' and bot_choice == 'scissors':                #if user picks rock and bot scissors do this
+        print('You win!')                                                   #display
+        person_score += 1                                                   #add 1 to person score
+    elif user_choice == 'paper' and bot_choice == 'rock':                   #if user picks paper and bot pick rock do this
+        print('You win!')                                                   #dipslay
+        person_score += 1                                                   #add 1 to person score
+    elif user_choice == 'paper' and bot_choice == 'scissors':               #if user picks paper and bot picks scissors do this
+        print('You lose  :(')                                               #display
+        bot_score += 1                                                      #add one to bot score
+    elif user_choice == 'scissors' and bot_choice == 'paper':               #if user picks scissors and bot picks paper do this
+        print('You win!')                                                   #display
+        person_score += 1                                                   #add 1 to person score
+    elif user_choice == 'scissors' and bot_choice == 'rock':                #if user picks scissors and bot picks rock do this
+        print('You lose  :(')                                               #display
+        bot_score += 1                                                      #add 1 to bot score
         
-        if user_choice == bot_choice:
-            print('You tied. Go again.')
-            time.sleep(1)
-            print(f'Your score is... {person_score}.')
-            time.sleep(1)
-            print(f'Computer score is... {bot_score}.')
-            time.sleep(1)
-            continue
-        elif user_choice == 'rock' and bot_choice == 'paper':
-            print('You lose  :(')
-            bot_score += 1
-            time.sleep(1)
-            print(f'Your score is... {person_score}.')
-            time.sleep(1)
-            print(f'Computer score is... {bot_score}.')
-            time.sleep(1)
-        elif user_choice == 'rock' and bot_choice == 'scissors':
-            print('You win!')
-            person_score += 1
-            time.sleep(1)
-            print(f'Your score is... {person_score}.')
-            time.sleep(1)
-            print(f'Computer score is... {bot_score}.')
-            time.sleep(1)
-        elif user_choice == 'paper' and bot_choice == 'rock':
-            print('You win!')
-            person_score += 1
-            time.sleep(1)
-            print(f'Your score is... {person_score}.')
-            time.sleep(1)
-            print(f'Computer score is... {bot_score}.')
-            time.sleep(1)
-        elif user_choice == 'paper' and bot_choice == 'scissors':
-            print('You lose  :(')
-            bot_score += 1
-            time.sleep(1)
-            print(f'Your score is... {person_score}.')
-            time.sleep(1)
-            print(f'Computer score is... {bot_score}.')
-            time.sleep(1)
-        elif user_choice == 'scissors' and bot_choice == 'paper':
-            print('You win!')
-            person_score += 1
-            time.sleep(1)
-            print(f'Your score is... {person_score}.')
-            time.sleep(1)
-            print(f'Computer score is... {bot_score}.')
-            time.sleep(1)
-        elif user_choice == 'scissors' and bot_choice == 'rock':
-            print('You lose  :(')
-            bot_score += 1
-            time.sleep(1)
-            print(f'Your score is... {person_score}.')
-            time.sleep(1)
-            print(f'Computer score is... {bot_score}.')
-            time.sleep(1)
-        elif user_choice != 'rock' or 'paper' or 'scissors':
-            print('please enter rock, paper, or scissors')
+    time.sleep(1)                                                           #pause 1 second
+    print(f'Your score is... {person_score}.')                              #display
+    time.sleep(1)                                                           #pause 1 seconds
+    print(f'Computer score is... {bot_score}.')                             #display
+    time.sleep(1)                                                           #pause 1 seconds
+
+if person_score == 2:                                                       #if person score = 2 do this
+    print('you win! Congrats.')                                             #display
+else:                                                                       #else
+    print('you lose. Good luck next time.')                                 #display
