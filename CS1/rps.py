@@ -5,7 +5,7 @@ choices = ['rock', 'paper', 'scissors']                                     #cho
 bot_score = 0                                                               #set computer score to 0
 person_score = 0                                                            #set person score to 0
 
-while person_score < 2 and bot_score < 2:                                                                     #forever loop
+while person_score < 2 and bot_score < 2:                                   #loop goes on untilperson score and bot score are above 1
     user_choice = input('Enter rock, paper, or scissors...').lower()        #set user choice to input in lower case
     
     if user_choice not in choices:                                          #if user does not enter rock, paper, or scissors do this
