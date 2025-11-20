@@ -2,14 +2,52 @@
 <html>
 <body style="background-color: rgba(2, 19, 19, 0.846);">
 
-<p style="color:lab(80.09% -30.76 -30.86);">rock</p>
-<p style="color:rgb(0, 225, 255);">paper</p>
-<img src="https://png.pngtree.com/png-vector/20250614/ourmid/pngtree-big-rock-stone-isolated-on-transparent-background-png-image_16534636.png" alt="Girl in a jacket" width="200">
+<button value = "rock" id = "rock">
+<img src="https://png.pngtree.com/png-vector/20250614/ourmid/pngtree-big-rock-stone-isolated-on-transparent-background-png-image_16534636.png" alt="rock" width="200">
+</button>
+
+<button value = "paper" id = "paper">
+<img src="https://static.vecteezy.com/system/resources/previews/056/098/830/non_2x/crumpled-white-paper-texture-for-background-and-design-use-free-png.png" alt="paper" width="200">
+</button>
+
+<button value = "scissors" id = "scissors">
+<img src="https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/978462/978462_p_main_image/978462" alt="scissors" width="200">
+</button>
+
+<p style="color:aliceblue">Current Variable Value: <span id="displayValue"></span></p>
 
 <script>
+    const displayElement = document.getElementById("displayValue");
+    const myArray = ['rock', 'paper', 'scissors'];
+    
 
+    function play(userRps) {
+        const randomIndex = Math.floor(Math.random() * myArray.length);
+        const botRps = myArray[randomIndex];
+        displayElement.textContent = userRps;
+        alert("User chose: " + userRps + " and the bot chose " + botRps);
+
+        if (userRps == botRps) {
+            alert('You tied. Go again.');
+        } else if (userRps == 'rock' && botRps == 'paper') {
+            alert('You lose :(');
+        } else if (userRps == 'paper' && botRps == 'scissors') {
+            alert('You lose :(');
+        } else if (userRps == 'scissors' && botRps == 'rock') {
+            alert('You lose :(');
+        } else if (userRps == 'rock' && botRps == 'scissors') {
+            alert('You win! congrats.');
+        } else if (userRps == 'paper' && botRps == 'rock') {
+            alert('You win! congrats.');
+        } else if (userRps == 'scissors' && botRps == 'paper') {
+            alert('You win! congrats.');
+        }
+    }
+    
+    document.getElementById('rock').addEventListener('click', () => play('rock'))
+    document.getElementById('paper').addEventListener('click', () => play('paper'))
+    document.getElementById('scissors').addEventListener('click', () => play('scissors'))
 
 </script>
 </body>
 </html>
-
