@@ -39,9 +39,6 @@ while True:
     rounds += 1
     print(f'You have completed {rounds} rounds and have got {correct} correct.')
 
-    again = input('please enter yes if you would like to play again.').lower()
+   
 
-    if again == 'yes':
-        continue
-    else:
-        exit()
+    
