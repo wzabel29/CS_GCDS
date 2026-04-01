@@ -4,7 +4,13 @@ mains = ["Spicy salmon roll","Chicken fried rice","Pork lo mien", "Spicy tonkuts
 main_prices = [20, 25, 28, 30, 18, 20, 22, 30, 20]
 flairs = ["with spicy edemamme","with soy sauce and spicy mayo","with crab rangoons","with white rice","with seaweed salad", "with miso soup", "with vegetable springrolls","with spicy cucumbers", "with egg drop soup"]
 flair_prices = [3, 4, 5, 5, 7, 4, 4, 6, 5]
-user_items = int(input('How many items do you need?'))
+while True:
+    try:
+     user_items = int(input('How many items do you need?'))
+     break
+    except ValueError:
+      print("Please enter a valid number.")
+      continue
 
 total = 0
 
