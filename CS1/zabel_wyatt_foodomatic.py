@@ -116,10 +116,10 @@ if yes_jeopardy == "yes":
         elif category == "movies":
             money = int(input("please enter a cash value of 200, 400, 800, or 1000 as a number:"))
             money_index = point_scores.index(money)
-            question = movies_answers[money_index]
+            question = movies_questions[money_index]
             print(question)
             user_answer = input("answer(enter proper nouns with uppercase):")
-            if user_answer == movies_questions[money_index]:
+            if user_answer == movies_answers[money_index]:
                 print("correct")
                 score += money
             else:
