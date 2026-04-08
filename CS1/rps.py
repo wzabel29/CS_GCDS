@@ -1,3 +1,5 @@
-x = 1
-y = 3
-print(f"x + y is {x+y}")
+def number_10 (x):
+    x = x+10
+    print(x)
+
+number_10(2)
