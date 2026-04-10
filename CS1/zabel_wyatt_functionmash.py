@@ -29,3 +29,17 @@ And taking control
     time.sleep(1)
     chorus()
 sing_song()
+
+def add():
+    def get_number(order):
+        try:
+            num = int(input(f"pick your {order} number:"))
+        except ValueError:
+            print("please enter a valid number")
+        if num > 0:
+            return num
+        
+    num_1 = get_number("first")
+    num_2 = get_number("second")
+    return num_1 + num_2
+print(add())
