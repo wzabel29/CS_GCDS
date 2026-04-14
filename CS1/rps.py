@@ -1,5 +1,3 @@
-def number_10 (x):
-    x = x+10
-    print(x)
-
-number_10(2)
+singer_list = [1, 5, 8]
+for i in singer_list:
+        print(singer_list)
