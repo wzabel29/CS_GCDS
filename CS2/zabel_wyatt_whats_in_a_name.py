@@ -12,6 +12,8 @@
 └───────────────────────────────────────────────────────────────────────────┘
 """
 
+import random
+
 def reverse_display():
     letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
     "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -22,6 +24,7 @@ def reverse_display():
 def count_vowels(user_string):
     vowels = "aeiou"
     vowel_count = 0
+
     for vow in user_string:
         if vow in vowels:
             vowel_count += 1
@@ -31,6 +34,7 @@ def count_vowels(user_string):
 def count_consonant(user_string):
     consonant = "bcdfghjklmnpqrstvwxyz"
     consonant_count = 0
+
     for con in user_string:
         if con in consonant:
             consonant_count += 1
@@ -64,16 +68,47 @@ def middle_name(name):
         name += n
         return name
 
+
 def last_name(name):
     names = get_names(name)
     return names[-1]
 
 
-def hyphen_name(names):
-    last_name(names)
-    if "-" in names:
-        return True
-    else: 
-        False
+def hyphen_name(names): 
+    return "-" in last_name(names)
 
-hyphen_name(get_names("enter your name:"))
+
+def lowercase(user_string):
+    lower = ''
+    low = ""
+
+    for char in user_string:
+        if 65 <= ord(char) <= 90:
+            low += chr(ord(char)+32)
+        else:
+            low += char
+
+    lower += low
+    return lower
+
+
+def uppercase(user_string):
+    upper = ''
+    upp = ""
+    
+    for char in user_string:
+        if 97 <= ord(char) <= 122:
+            upp += chr(ord(char)-32)
+        else:
+            upp += char
+    
+    upper += upp
+    return upper
+
+
+def mixer(user_string):
+    first_shuffle = user_string[::random.randint(-len(user_string)+1, 0) ]
+    second_shuffle = first_shuffle[::random.randint(0, len(user_string)-1)]
+    return second_shuffle
+
+print(mixer(input("")))
