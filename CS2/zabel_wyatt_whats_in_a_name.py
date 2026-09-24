@@ -107,8 +107,27 @@ def uppercase(user_string):
 
 
 def mixer(user_string):
-    first_shuffle = user_string[::random.randint(-len(user_string)+1, 0) ]
-    second_shuffle = first_shuffle[::random.randint(0, len(user_string)-1)]
-    return second_shuffle
+    shuffle_l = list(user_string)
 
-print(mixer(input("")))
+    for i in range(len(shuffle_l)):
+        rand_i = random.randint(0, len(shuffle_l) - 1)
+        shuffle_l[i], shuffle_l[rand_i] = shuffle_l[rand_i], shuffle_l[i]
+
+    new_string = ''
+
+    for char in shuffle_l:
+        new_string += char
+    return new_string
+
+
+def palindrome(user_string):
+    return user_string == user_string[::-1]
+
+
+def initials(name):
+    names = get_names(name)
+    init = uppercase(f"{names[0][0]},{names[-1][0]}")
+    return init
+
+
+print(initials(input("")))
