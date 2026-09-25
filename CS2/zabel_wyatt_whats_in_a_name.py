@@ -22,23 +22,29 @@ def reverse_display():
 
 
 def count_vowels(user_string):
-    vowels = "aeiou"
-    vowel_count = 0
+    vowels = {"a":0, "e":0, "i":0, "o":0, "u":0}
 
     for vow in user_string:
-        if vow in vowels:
-            vowel_count += 1
-    return vowel_count
+        if vow in vowels.keys():
+            vowels[vow] += 1
+    total_vowels = sum(vowels.values())
+    for key, value in vowels.items():
+        print(f'{key}: {value}')
+    return vowels, total_vowels
 
 
 def count_consonant(user_string):
-    consonant = "bcdfghjklmnpqrstvwxyz"
-    consonant_count = 0
+    consonants = {"b":0, "c":0, "d":0, "f":0, "g":0, "h":0, "j":0, "k":0, "l":0, "m":0, "n":0, "p":0, "q":0, "r":0, "s":0, "t":0, "v":0, "w":0, "x":0, "y":0, "z":0}
+    "bcdfghjklmnpqrstvwxyz"
 
     for con in user_string:
-        if con in consonant:
-            consonant_count += 1
-    return consonant_count
+        if con in consonants.keys():
+            consonants[con] += 1
+    total_vowels = sum(consonants.values())
+    for key, value in consonants.items():
+        print(f'{key}: {value}')
+    return consonants, total_vowels
+
 
 def get_names(name):
     names = []
@@ -79,7 +85,7 @@ def hyphen_name(names):
 
 
 def lowercase(user_string):
-    lower = ''
+    lower = ""
     low = ""
 
     for char in user_string:
@@ -126,8 +132,15 @@ def palindrome(user_string):
 
 def initials(name):
     names = get_names(name)
-    init = uppercase(f"{names[0][0]},{names[-1][0]}")
-    return init
+    return uppercase(f"{names[0][0]},{names[-1][0]}")
 
 
-print(initials(input("")))
+def contains_title(name):
+    titles_l = ["Dr", "Mr", "Ms", "Mrs", "Ph.d", "Sir"]
+
+    for n in get_names(name):
+        if n in titles_l:
+            return True
+    return False
+
+print(contains_title(input("")))
