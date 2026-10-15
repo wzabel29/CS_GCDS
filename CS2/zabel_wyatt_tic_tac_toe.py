@@ -44,37 +44,47 @@ def get_player_move_2(board):
 def play_game(board):
     for i in range(4):
         get_player_move_1(board)
+        win, player = winner(board)
+        if win: 
+            print_board(board)
+            print(f"Congrats Player {player}") 
+            return
         get_player_move_2(board)
+        win, player = winner(board)
+        if win: 
+            print_board(board)
+            print(f"Congrats Player {player}") 
+            return
+        if winner(board) == True:
+            print(f"Congrats Player {winner(board)}")
+            return
 
     get_player_move_1(board)
-
-    winner(board)
+    win, player = winner(board)
+    print_board(board)
+    if win:
+        print(f"Congrats Player {player}")
+    else:
+        print("Game over! It's a tie.")
 
 
 def winner(board):
-    if board[0][0] == board[1][1] == board[2][2]:
-        if board[0][0] == "X":
-            print("Congrats on winning player 1!")
-        else:
-            print("Congrats on winning player 2!")
-    elif board[0][2] == board[1][1] == board[2][0]:
-        if board[0][2] == "X":
-            print("Congrats on winning player 1!")
-        else:
-            print("Congrats on winning player 2!")
+    if board[0][0] == board[1][1] == board[2][2] and board[0][0] != " ":
+        player_winner = board[0][0]
+        return True, player_winner
+    elif board[0][2] == board[1][1] == board[2][0] and board[0][2] != " ":
+        player_winner = board[0][2]
+        return True, player_winner
 
     for i in range(3):
-        if board[i][0] == board [i][1] == board[i][2]:
-            if board[i][0] == "X":
-                print("Congrats on winning player 1!")
-            else:
-                print("Congrats on winning player 2!")
-        elif board[0][i] == board [1][i] == board[2][i]:
-            if board[0][i] == "X":
-                print("Congrats on winning player 1!")
-            else:
-                print("Congrats on winning player 2!")
+        if board[i][0] == board [i][1] == board[i][2] and board[i][0] != " ":
+            player_winner = board[i][0]
+            return True, player_winner
+    
+        elif board[0][i] == board [1][i] == board[2][i] and board[0][i] != " ":
+            player_winner = board[0][i]
+            return True, player_winner
 
-    print("Tie.")
+    return False, None
 
 play_game(board)
