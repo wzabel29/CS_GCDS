@@ -9,61 +9,61 @@ def print_board(board):
         {" |  ".join(board[2])}""")
 
 
-def get_player_move_1(board):
-    print_board(board)
-    print("Player 1: Choose a column and row:")
+def get_integer(row_or_column):
     while True:
-        col = int(input("enter column:"))
-        row = int(input("enter row:"))
-        if col not in (1, 2, 3) or row not in (1, 2, 3):
-            print("Choose a number 1 to 3")
-        else:
-            if board[row-1][col-1] == "X" or board[row-1][col-1] == "O":
-                print("That space is taken. Choose another!")
-            else:
-                board[row-1][col-1] = "X"
-                break
+        try:
+            num = int(input(f"Enter {row_or_column}: "))
+            if num not in [1, 2, 3]:
+                print("Choose a number 1 to 3")
+                continue
+            
+            return num - 1
+
+        except ValueError:
+            print("Enter a number from 1-3")
 
 
-def get_player_move_2(board):
+def get_player_move(board, x_or_o):
     print_board(board)
-    print("Player 2: Choose a column and row:")
+    print(f"Player {x_or_o}: Choose a column and row:")
+
     while True:
-        col = int(input("enter column:"))
-        row = int(input("enter row:"))
-        if col not in (1, 2, 3) or row not in (1, 2, 3):
-            print("Choose a number 1 to 3")
+        col = get_integer("column")
+        row = get_integer("row")
+    
+        if board[row][col] != " ":
+            print("That space is taken. Choose another!")
+            continue
         else:
-            if board[row-1][col-1] == "X" or board[row-1][col-1] == "O":
-                print("That space is taken. Choose another!")
-            else:
-                board[row-1][col-1] = "O"
-                break
+            board[row][col] = x_or_o
+            break
+
+        
 
 
 def play_game(board):
     for i in range(4):
-        get_player_move_1(board)
+        get_player_move(board, "X")
         win, player = winner(board)
         if win: 
             print_board(board)
-            print(f"Congrats Player {player}") 
+            print(f"Congrats player {player}") 
             return
-        get_player_move_2(board)
+        get_player_move(board, "O")
         win, player = winner(board)
         if win: 
             print_board(board)
-            print(f"Congrats Player {player}") 
+            print(f"Congrats player {player}") 
             return
         if winner(board) == True:
-            print(f"Congrats Player {winner(board)}")
+            print(f"Congrats player {player}")
             return
 
-    get_player_move_1(board)
+    get_player_move(board, "X")
     win, player = winner(board)
     print_board(board)
     if win:
-        print(f"Congrats Player {player}")
+        print(f"Congrats {player}")
     else:
         print("Game over! It's a tie.")
 
