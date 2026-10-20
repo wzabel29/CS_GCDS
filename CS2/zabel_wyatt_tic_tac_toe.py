@@ -1,6 +1,12 @@
-board = [[" "," "," "], [" "," "," "], [" "," "," "]]
-
 def print_board(board):
+    """prints tic tac toe board
+                    
+            Args:
+                board(list): list that makes up spots on tic tac toe board
+                    
+            Returns:
+                prints board in format of tic tac toe board                   
+    """
     print(f"""
         {" |  ".join(board[0])}
         --+----+--
@@ -10,6 +16,14 @@ def print_board(board):
 
 
 def get_integer(row_or_column):
+    """gets number for column and row
+                        
+            Args:
+                row_or_column(str): inputed string of row or column 
+                        
+            Returns:
+                num(int): row or column in terms of index                   
+        """
     while True:
         try:
             num = int(input(f"Enter {row_or_column}: "))
@@ -24,12 +38,21 @@ def get_integer(row_or_column):
 
 
 def get_player_move(board, x_or_o):
+    """gets number for column and row
+                            
+            Args:
+                board(list): list that makes up spots on tic tac toe board
+                x_or_o(str): "X" or "O" when playing game 
+                    
+            Returns:
+                board adding "X" or "O"                   
+            """
     print_board(board)
     print(f"Player {x_or_o}: Choose a column and row:")
 
     while True:
-        col = get_integer("column")
-        row = get_integer("row")
+        col = get_integer("column: ")
+        row = get_integer("row: ")
     
         if board[row][col] != " ":
             print("That space is taken. Choose another!")
@@ -42,6 +65,15 @@ def get_player_move(board, x_or_o):
 
 
 def play_game(board):
+    """gets number for column and row
+                                
+            Args:
+                board(list): list that makes up spots on tic tac toe board
+                    
+            Returns:
+                prints congrats to winning player
+                return: ends function                  
+                """
     for i in range(4):
         get_player_move(board, "X")
         win, player = winner(board)
@@ -55,9 +87,6 @@ def play_game(board):
             print_board(board)
             print(f"Congrats player {player}") 
             return
-        if winner(board) == True:
-            print(f"Congrats player {player}")
-            return
 
     get_player_move(board, "X")
     win, player = winner(board)
@@ -69,6 +98,17 @@ def play_game(board):
 
 
 def winner(board):
+    """gets number for column and row
+                                
+            Args:
+                board(list): list that makes up spots on tic tac toe board
+                    
+            Returns:
+                True: if there is a winner
+                False: if there is no winner
+                None: if no player wins
+                player_winner(str): "X" or "O" which wins             
+                """
     if board[0][0] == board[1][1] == board[2][2] and board[0][0] != " ":
         player_winner = board[0][0]
         return True, player_winner
@@ -87,4 +127,17 @@ def winner(board):
 
     return False, None
 
-play_game(board)
+
+def main():
+    """
+    menu for what user would like to do
+    """
+    while True:
+        play = input("would you like to play 2 player tic tac toe? y or n: ").lower()
+        if play == "y":
+            board = [[" "," "," "], [" "," "," "], [" "," "," "]]
+            play_game(board)
+        elif play == "n":
+            break
+
+main()
