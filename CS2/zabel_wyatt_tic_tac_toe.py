@@ -89,7 +89,7 @@ def winner(board):
 
 def two_player(board):
     """
-    gets number for column and row
+    Plays 2 person tic tac toe
                                 
     Args:
         board(list): list that makes up spots on tic tac toe board  
@@ -122,6 +122,15 @@ def two_player(board):
 
 
 def robot_player(board):
+    """
+    Plays tic tac toe against a robot
+                                
+    Args:
+        board(list): list that makes up spots on tic tac toe board  
+    Returns:
+        prints congrats to winning player
+        return: ends function                  
+    """
     turns = 0
     
     while turns < 10:
