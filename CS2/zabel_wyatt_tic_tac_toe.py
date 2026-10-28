@@ -166,10 +166,10 @@ def main():
     menu for what user would like to do
     """
     while True:
-        play = input("""would you like to play:"
-        "1) 2 player tic tac toe"
-        "2) tic tac toe against a robot"
-        "3) quit
+        play = input("""would you like to play:
+        1) 2 player tic tac toe
+        2) tic tac toe against a robot
+        3) quit
         response:  """).lower()
         
         if play == "1":
