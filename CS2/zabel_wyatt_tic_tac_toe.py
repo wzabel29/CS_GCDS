@@ -153,7 +153,7 @@ def robot_player(board):
                 continue
             board[row][col] = "O"
             break
-
+        win, player = winner(board)
         if win: 
             print(f"Congrats player {player}") 
             return
