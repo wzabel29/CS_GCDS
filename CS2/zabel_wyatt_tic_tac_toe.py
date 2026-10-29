@@ -1,3 +1,16 @@
+""""
+┌───────────────────────────────────────────────────────────────────────────┐
+│                               Tic Tac Toe                                 |
+├───────────────────────────────────────────────────────────────────────────┤
+│ Name: Wyatt Zabel                                                         │
+| Course: CS2                                                               |
+│ Log: Finished project (1.0)                                               |
+| Bugs: N/K                                                                 │
+│ Description:  Play Tic Tac Toe agqainst another player or robot.          |
+|Board is created by nested lists in list and winner is checked by cycling  |
+|through list.                                                              |
+└───────────────────────────────────────────────────────────────────────────┘
+"""
 import random
 
 def print_board(board):
