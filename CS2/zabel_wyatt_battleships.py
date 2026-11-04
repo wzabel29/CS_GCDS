@@ -89,27 +89,37 @@ def robot_player():
                 continue
             robot_spots[row][col] = "🌊"
             break
+    player_one_play = [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"]]
+    robot_play = [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦", "🟦", "🟦", "🟦"], ["🟦", "🟦","🟦", "🟦", "🟦"], ["🟦", "🟦", "🟦", "🟦", "🟦"]]
+    player_one_hits = 0
+    robot_hits = 0
     while True:
-        player_one_play = [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"]
         get_player_move(player_one_play, "🌊")
         if robot_spots[row][col] == player_one_play[row][col]:
             player_one_play[row][col] = "💥"
+            player_one_hits += 1
+            winner(player_one_hits)
+            if winner == True:
+                print("Congrats player 1 on winning!")
         while True:
             row = random.randint(0, 4)
             col = random.randint(0, 4)
         
-            if robot_spots[row][col] != "🟦":
+            if robot_play[row][col] != "🟦":
                 continue
-            robot_spots[row][col] = "🌊"
+            robot_play[row][col] = "🌊"
             break
-        
+        if player_one_spots[row][col] == robot_play[row][col]:
+            robot_play[row][col] = "💥"
+            robot_hits += 1
+            winner(robot_hits)    
+            if winner == True:
+                print("Player 1, you have lost")
 
-        
 
-
-
-def two_player():
-    
+def winner(hits):
+    if hits == 4:
+        return True
 
 
 def main():
@@ -124,14 +134,13 @@ def main():
         response:  """).lower()
         
         if play == "1":
-            board = [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"]]               #set to blank before playing
-            two_player(board)
+            pass
+            #two_player()
         elif play == "2":
-            board = [[" "," "," "], [" "," "," "], [" "," "," "]]               #set to blank before playing
-            robot_player(board)
+            robot_player()
         elif play == "3":
             exit()
         else:
             print('Invalid')
 
-print_board()
+main()
