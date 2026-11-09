@@ -54,7 +54,7 @@ def get_integer(row_or_column):
             print("Enter a number from 1-5")
 
 
-def get_player_move(board, symbol):
+def get_player_move(board, symbol, hit_or_pick):
     """
     gets number for column and row
                             
@@ -65,7 +65,7 @@ def get_player_move(board, symbol):
         board adding "X" or "O"                   
     """
     print_board(board)
-    print(f"Time to pick a spot!")
+    print(f"Time to pick a spot to {hit_or_pick}!")
 
     while True:
         col = get_integer("column")
@@ -75,7 +75,6 @@ def get_player_move(board, symbol):
             print("That space is taken. Choose another!")
             continue
         board[row][col] = symbol                                                  #substitute in list in list
-        print_board(board)
 
         return row, col
         
@@ -86,7 +85,7 @@ def robot_player():
 
     print("Place your 4 ships please.")
     for i in range(4):
-        get_player_move(player_one_spots, "🚢")
+        get_player_move(player_one_spots, "🚢", "pick")
 
     for i in range(4):
         while True:
@@ -101,9 +100,9 @@ def robot_player():
     robot_play = init_board()
     player_one_hits = 0
     robot_hits = 0
-    
+
     while True:
-        get_player_move(player_one_play, "🌊")
+        get_player_move(player_one_play, "🌊", "hit")
         if robot_spots[row][col] == player_one_play[row][col]:
             player_one_play[row][col] = "💥"
             player_one_hits += 1
