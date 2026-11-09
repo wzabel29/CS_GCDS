@@ -29,9 +29,8 @@ def print_board(board):
         {"".join(board[4])}""")
 
 
-def init_board(board):
-    board = [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"]]
-    return board
+def init_board():
+    return [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"]]
 
 
 def get_integer(row_or_column):
@@ -82,25 +81,27 @@ def get_player_move(board, symbol):
         
 
 def robot_player():
-    player_one_spots = init_board(player_one_spots)
-    robot_spots = init_board(robot_spots)
-    print("Place your 4 ships please.")
+    player_one_spots = init_board()
+    robot_spots = init_board()
 
+    print("Place your 4 ships please.")
     for i in range(4):
-        row, col = get_player_move(player_one_spots, "🚢")
+        get_player_move(player_one_spots, "🚢")
+
     for i in range(4):
         while True:
             row = random.randint(0, 4)
             col = random.randint(0, 4)
-        
             if robot_spots[row][col] != "🟦":
                 continue
-            robot_spots[row][col] = "🌊"
+            robot_spots[row][col] = "🚢"
             break
-    player_one_play = init_board(player_one_play)
-    robot_play = init_board(robot_play)
+
+    player_one_play = init_board()
+    robot_play = init_board()
     player_one_hits = 0
     robot_hits = 0
+    
     while True:
         get_player_move(player_one_play, "🌊")
         if robot_spots[row][col] == player_one_play[row][col]:
