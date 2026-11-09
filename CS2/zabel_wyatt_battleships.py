@@ -1,14 +1,13 @@
 """"
 ┌───────────────────────────────────────────────────────────────────────────┐
-│                               Tic Tac Toe                                 |
+│                               Battleships                                 |
 ├───────────────────────────────────────────────────────────────────────────┤
 │ Name: Wyatt Zabel                                                         │
 | Course: CS2                                                               |
 │ Log: Finished project (1.0)                                               |
 | Bugs: N/K                                                                 │
-│ Description:  Play Tic Tac Toe against another player or robot.          |
-|Board is created by nested lists in list and winner is checked by cycling  |
-|through list.                                                              |
+│ Description:  Play battleships against another player or robot.           |
+| Board is created by nested lists in list.                                 |
 └───────────────────────────────────────────────────────────────────────────┘
 """
 import random
@@ -28,6 +27,11 @@ def print_board(board):
         {"".join(board[2])}
         {"".join(board[3])}
         {"".join(board[4])}""")
+
+
+def init_board(board):
+    board = [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"]]
+    return board
 
 
 def get_integer(row_or_column):
@@ -71,16 +75,20 @@ def get_player_move(board, symbol):
         if board[row][col] != "🟦":                                              #only take space if its blank
             print("That space is taken. Choose another!")
             continue
-        board[row][col] = {symbol}                                                #substitute in list in list
-        return board
+        board[row][col] = symbol                                                  #substitute in list in list
+        print_board(board)
+
+        return row, col
         
 
 def robot_player():
+    player_one_spots = init_board(player_one_spots)
+    robot_spots = init_board(robot_spots)
+    print("Place your 4 ships please.")
+
     for i in range(4):
-        player_one_spots = [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"]]
-        get_player_move(player_one_spots, "🌊")
+        row, col = get_player_move(player_one_spots, "🚢")
     for i in range(4):
-        robot_spots = [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"]]
         while True:
             row = random.randint(0, 4)
             col = random.randint(0, 4)
@@ -89,8 +97,8 @@ def robot_player():
                 continue
             robot_spots[row][col] = "🌊"
             break
-    player_one_play = [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"]]
-    robot_play = [["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦","🟦", "🟦", "🟦"], ["🟦","🟦", "🟦", "🟦", "🟦"], ["🟦", "🟦","🟦", "🟦", "🟦"], ["🟦", "🟦", "🟦", "🟦", "🟦"]]
+    player_one_play = init_board(player_one_play)
+    robot_play = init_board(robot_play)
     player_one_hits = 0
     robot_hits = 0
     while True:
@@ -98,8 +106,7 @@ def robot_player():
         if robot_spots[row][col] == player_one_play[row][col]:
             player_one_play[row][col] = "💥"
             player_one_hits += 1
-            winner(player_one_hits)
-            if winner == True:
+            if winner(player_one_hits):
                 print("Congrats player 1 on winning!")
         while True:
             row = random.randint(0, 4)
@@ -111,9 +118,8 @@ def robot_player():
             break
         if player_one_spots[row][col] == robot_play[row][col]:
             robot_play[row][col] = "💥"
-            robot_hits += 1
-            winner(robot_hits)    
-            if winner == True:
+            robot_hits += 1   
+            if winner(robot_hits):
                 print("Player 1, you have lost")
 
 
