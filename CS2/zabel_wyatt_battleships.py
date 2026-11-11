@@ -11,6 +11,7 @@
 └───────────────────────────────────────────────────────────────────────────┘
 """
 import random
+import time
 
 def print_board(board):
     """
@@ -86,7 +87,10 @@ def robot_player():
     print("Place your 4 ships please.")
     for i in range(4):
         get_player_move(player_one_spots, "🚢", "pick")
+    print_board(player_one_spots)
 
+    print("robot choosing spots...")
+    time.sleep(2)
     for i in range(4):
         while True:
             row = random.randint(0, 4)
@@ -100,15 +104,24 @@ def robot_player():
     robot_play = init_board()
     player_one_hits = 0
     robot_hits = 0
+    print("Begin!")
 
     while True:
         row, col = get_player_move(player_one_play, "🌊", "hit")
         if robot_spots[row][col] != "🟦" and player_one_play[row][col] != "🟦":
             player_one_play[row][col] = "💥"
             player_one_hits += 1
-            if winner(player_one_hits):
-                print("Congrats player 1 on winning!")
-                break
+            print("Hit!")
+        else:
+            print("Miss.")
+
+        print("Your shots:")
+        print_board(player_one_play)
+
+        if winner(player_one_hits):
+            print("Congrats player 1 on winning!")
+            break
+
         while True:
             row = random.randint(0, 4)
             col = random.randint(0, 4)
@@ -117,12 +130,20 @@ def robot_player():
                 continue
             robot_play[row][col] = "🌊"
             break
+
         if player_one_spots[row][col] != "🟦" and robot_play[row][col] != "🟦":
             robot_play[row][col] = "💥"
-            robot_hits += 1   
-            if winner(robot_hits):
-                print("Player 1, you have lost")
-                break
+            robot_hits += 1
+            print("You have been hit!")
+        else:
+            print("your ships have not been hit")
+
+        print("The damage on your board:")
+        print_board(robot_play)
+           
+        if winner(robot_hits):
+            print("Player 1, you have lost")
+            break
 
 
 def winner(hits):
