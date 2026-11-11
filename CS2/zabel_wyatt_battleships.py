@@ -1,4 +1,4 @@
-""""
+"""
 ┌───────────────────────────────────────────────────────────────────────────┐
 │                               Battleships                                 |
 ├───────────────────────────────────────────────────────────────────────────┤
@@ -22,11 +22,11 @@ def print_board(board):
         print: board in format of tic tac toe board                   
     """
     print(f"""
-        {"".join(board[0])}
-        {"".join(board[1])}
-        {"".join(board[2])}
-        {"".join(board[3])}
-        {"".join(board[4])}""")
+    {"".join(board[0])}
+    {"".join(board[1])}
+    {"".join(board[2])}
+    {"".join(board[3])}
+    {"".join(board[4])}""")
 
 
 def init_board():
@@ -102,12 +102,13 @@ def robot_player():
     robot_hits = 0
 
     while True:
-        get_player_move(player_one_play, "🌊", "hit")
-        if robot_spots[row][col] == player_one_play[row][col]:
+        row, col = get_player_move(player_one_play, "🌊", "hit")
+        if robot_spots[row][col] != "🟦" and player_one_play[row][col] != "🟦":
             player_one_play[row][col] = "💥"
             player_one_hits += 1
             if winner(player_one_hits):
                 print("Congrats player 1 on winning!")
+                break
         while True:
             row = random.randint(0, 4)
             col = random.randint(0, 4)
@@ -116,11 +117,12 @@ def robot_player():
                 continue
             robot_play[row][col] = "🌊"
             break
-        if player_one_spots[row][col] == robot_play[row][col]:
+        if player_one_spots[row][col] != "🟦" and robot_play[row][col] != "🟦":
             robot_play[row][col] = "💥"
             robot_hits += 1   
             if winner(robot_hits):
                 print("Player 1, you have lost")
+                break
 
 
 def winner(hits):
