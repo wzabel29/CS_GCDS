@@ -130,7 +130,9 @@ def robot_player():
                 continue
             robot_play[row][col] = "🌊"
             break
-
+        
+        print("Robot shoosing shot...")
+        time.sleep(2)
         if player_one_spots[row][col] != "🟦" and robot_play[row][col] != "🟦":
             robot_play[row][col] = "💥"
             robot_hits += 1
