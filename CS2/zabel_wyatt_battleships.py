@@ -97,7 +97,9 @@ def two_player():
         get_player_move(player_two_spots, "🚢", "pick")
     print_board(player_two_spots)
 
+    time.sleep(2)
     print("\n" * 30)
+
     player_one_play = init_board()
     player_two_play = init_board()
     player_one_hits = 0
