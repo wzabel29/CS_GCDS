@@ -80,6 +80,65 @@ def get_player_move(board, symbol, hit_or_pick):
         return row, col
         
 
+def two_player():
+    player_one_spots = init_board()
+    player_two_spots = init_board()
+
+    print("Player 1, Place your 4 ships please. Hide the screen from player 2.")
+    for i in range(4):
+        get_player_move(player_one_spots, "🚢", "pick")
+    print_board(player_one_spots)
+
+    print("\n" * 30)
+    print("Please give the screen to player 2.")
+    time.sleep(2)
+    print("Player 2, Place your 4 ships please. Hide the screen from player 1.")
+    for i in range(4):
+        get_player_move(player_two_spots, "🚢", "pick")
+    print_board(player_two_spots)
+
+    print("\n" * 30)
+    player_one_play = init_board()
+    player_two_play = init_board()
+    player_one_hits = 0
+    player_two_hits = 0
+    print("Begin!")
+
+    while True:
+        print("Player 1, choose where to hit")
+        row, col = get_player_move(player_one_play, "🌊", "hit")
+        if player_two_spots[row][col] != "🟦":
+            player_one_play[row][col] = "💥"
+            player_one_hits += 1
+            print("Hit!")
+        else:
+            print("Miss.")
+
+        print("Player 1 shots:")
+        print_board(player_one_play)
+
+        if winner(player_one_hits):
+            print("Congrats player 1 on winning!")
+            break
+
+        print("Player 2, choose where to hit")
+        row, col = get_player_move(player_two_play, "🌊", "hit")
+        if player_one_spots[row][col] != "🟦":
+            player_two_play[row][col] = "💥"
+            player_two_hits += 1
+            print("Hit!")
+        else:
+            print("Miss.")
+
+        print("Player 2 shots:")
+        print_board(player_two_play)
+
+        if winner(player_two_hits):
+            print("Congrats player 2 on winning!")
+            break
+
+
+
 def robot_player():
     player_one_spots = init_board()
     robot_spots = init_board()
@@ -108,7 +167,7 @@ def robot_player():
 
     while True:
         row, col = get_player_move(player_one_play, "🌊", "hit")
-        if robot_spots[row][col] != "🟦" and player_one_play[row][col] != "🟦":
+        if robot_spots[row][col] != "🟦":
             player_one_play[row][col] = "💥"
             player_one_hits += 1
             print("Hit!")
@@ -131,9 +190,9 @@ def robot_player():
             robot_play[row][col] = "🌊"
             break
         
-        print("Robot shoosing shot...")
+        print("Robot shooting shot...")
         time.sleep(2)
-        if player_one_spots[row][col] != "🟦" and robot_play[row][col] != "🟦":
+        if player_one_spots[row][col] != "🟦":
             robot_play[row][col] = "💥"
             robot_hits += 1
             print("You have been hit!")
@@ -149,8 +208,7 @@ def robot_player():
 
 
 def winner(hits):
-    if hits == 4:
-        return True
+    return hits == 4
 
 
 def main():
@@ -159,14 +217,13 @@ def main():
     """
     while True:
         play = input("""would you like to play:
-        1) 2 player tic tac toe
-        2) tic tac toe against a robot
+        1) 2 player battleships
+        2) battleship against a robot
         3) quit
-        response:  """).lower()
+        response:  """)
         
         if play == "1":
-            pass
-            #two_player()
+            two_player()
         elif play == "2":
             robot_player()
         elif play == "3":
