@@ -12,6 +12,7 @@
 """
 import random
 import time
+import os
 
 def print_board(board):
     """
@@ -149,6 +150,8 @@ def robot_player():
     for i in range(4):
         get_player_move(player_one_spots, "🚢", "pick")
     print_board(player_one_spots)
+    time.sleep(2)
+    os.system('cls')
 
     print("robot choosing spots...")
     time.sleep(2)
