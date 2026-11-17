@@ -14,6 +14,7 @@ import random
 import time
 import os
 
+
 def print_board(board):
     """
     prints tic tac toe board
@@ -76,78 +77,76 @@ def get_player_move(board, symbol, hit_or_pick):
         if board[row][col] != "🟦":                                              #only take space if its blank
             print("That space is taken. Choose another!")
             continue
-        board[row][col] = symbol                                                  #substitute in list in list
 
+        board[row][col] = symbol
         return row, col
 
 
-def gameplay(p_one_play, p_two_play, p_one_spots, p_two_spots, p_one, p_two, p_one_hits, p_two_hits, t_or_f):
+def take_shot(play, spots, player, hits, bot_or_player):
+    print(f"{player}, choose where to hit")
+
+    if bot_or_player == 'player':
+        row, col = get_player_move(play, "🌊", "hit")
+    else:
+        while True:
+            row = random.randint(0, 4)
+            col = random.randint(0, 4)
+        
+            if play[row][col] == "🟦":
+                break
+
+        print("Robot shooting shot...")
+        time.sleep(2)
+
+    if spots[row][col] != "🟦":
+        play[row][col] = "💥"
+        hits += 1
+        print(f"{player} got a hit!")
+    else:
+        print(f"{player} missed!")
+        play[row][col] = "🌊"
+
+    print(f"{player} shots:")
+    print_board(play)
+    return hits
+
+
+def winner(player, hits):
+    if hits == 4:
+        print(f"Congrats {player} on winning!")
+        return True
+    return False
+
+
+def gameplay(p_one_play, p_two_play, p_one_spots, p_two_spots, p_one, p_two, p_one_hits, p_two_hits, against_player):
     while True:
-        print(f"{p_one}, choose where to hit")
-        row, col = get_player_move(p_one_play, "🌊", "hit")
-        if p_two_spots[row][col] != "🟦":
-            p_one_play[row][col] = "💥"
-            p_one_hits += 1
-            print("Hit!")
-        else:
-            print("Miss.")
+        p_one_hits = take_shot(p_one_play, p_two_spots, p_one, p_one_hits, 'player')
 
-        print(f"{p_one} shots:")
-        print_board(p_one_play)
-
-        if winner(p_one_hits):
-            print(f"Congrats {p_one} on winning!")
+        if winner(p_one, p_one_hits):
             break
 
-        if t_or_f:
-            print(f"{p_two}, choose where to hit")
-            row, col = get_player_move(p_two_play, "🌊", "hit")
-            if p_one_spots[row][col] != "🟦":
-                p_two_play[row][col] = "💥"
-                p_two_hits += 1
-                print("Hit!")
-            else:
-                print("Miss.")
+        if against_player:
+            p_two_hits = take_shot(p_two_play, p_one_spots, p_two, p_two_hits, 'player')
 
-            print(f"{p_two} shots:")
-            print_board(p_two_play)
-
-            if winner(p_two_hits):
-                print(f"Congrats {p_two} on winning!")
+            if winner(p_two, p_two_hits):
                 break
         else:
-            while True:
-                row = random.randint(0, 4)
-                col = random.randint(0, 4)
-            
-                if p_two_play[row][col] != "🟦":
-                    continue
-                p_two_play[row][col] = "🌊"
-                break
-            
-            print("Robot shooting shot...")
-            time.sleep(2)
-            if p_one_spots[row][col] != "🟦":
-                p_two_play[row][col] = "💥"
-                p_two_hits += 1
-                print("You have been hit!")
-            else:
-                print("your ships have not been hit")
-    
+            p_two_hits = take_shot(p_two_play, p_one_spots, p_two, p_two_hits, 'bot')
             print("The damage on your board:")
             print_board(p_two_play)
                 
-            if winner(p_two_hits):
-                print("Player 1, you have lost")
+            if winner(p_two, p_two_hits):
                 break
 
 
 def two_player(player_one_spots, player_two_spots, player_one_play, player_two_play):
     print("Player 1, Place your 4 ships please. Hide the screen from player 2.")
+    
     for i in range(4):
         get_player_move(player_one_spots, "🚢", "pick")
     print_board(player_one_spots)
 
+    time.sleep(2)
     os.system("cls")
     print("Please give the screen to player 2.")
     time.sleep(2)
@@ -190,8 +189,6 @@ def robot_player(player_one_spots, robot_spots, player_one_play, robot_play):
     gameplay(player_one_play, robot_play, player_one_spots, robot_spots, "Player 1", "Robot", player_one_hits, robot_hits, False)
 
 
-def winner(hits):
-    return hits == 4
 
 
 def main():
