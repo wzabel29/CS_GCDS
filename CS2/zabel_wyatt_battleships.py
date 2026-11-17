@@ -142,10 +142,7 @@ def gameplay(p_one_play, p_two_play, p_one_spots, p_two_spots, p_one, p_two, p_o
                 break
 
 
-def two_player():
-    player_one_spots = init_board()
-    player_two_spots = init_board()
-
+def two_player(player_one_spots, player_two_spots, player_one_play, player_two_play):
     print("Player 1, Place your 4 ships please. Hide the screen from player 2.")
     for i in range(4):
         get_player_move(player_one_spots, "🚢", "pick")
@@ -162,8 +159,6 @@ def two_player():
     time.sleep(2)
     os.system("cls")
 
-    player_one_play = init_board()
-    player_two_play = init_board()
     player_one_hits = 0
     player_two_hits = 0
     print("Begin!")
@@ -171,10 +166,7 @@ def two_player():
     gameplay(player_one_play, player_two_play, player_one_spots, player_two_spots, "Player 1", "Player 2", player_one_hits, player_two_hits, True)
 
 
-def robot_player():
-    player_one_spots = init_board()
-    robot_spots = init_board()
-
+def robot_player(player_one_spots, robot_spots, player_one_play, robot_play):
     print("Place your 4 ships please.")
     for i in range(4):
         get_player_move(player_one_spots, "🚢", "pick")
@@ -191,8 +183,6 @@ def robot_player():
             robot_spots[row][col] = "🚢"
             break
 
-    player_one_play = init_board()
-    robot_play = init_board()
     player_one_hits = 0
     robot_hits = 0
     print("Begin!")
@@ -216,9 +206,17 @@ def main():
         response:  """)
         
         if play == "1":
-            two_player()
+            player_one_spots = init_board()
+            player_two_spots = init_board()
+            player_one_play = init_board()
+            player_two_play = init_board()
+            two_player(player_one_spots, player_two_spots, player_one_play, player_two_play)
         elif play == "2":
-            robot_player()
+            player_one_spots = init_board()
+            robot_spots = init_board()
+            player_one_play = init_board()
+            robot_play = init_board()
+            robot_player(player_one_spots, robot_spots, player_one_play, robot_play)
         elif play == "3":
             exit()
         else:
