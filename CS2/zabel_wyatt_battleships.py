@@ -154,6 +154,46 @@ def winner(player, hits):
     return False
 
 
+def setup(p_one_spots, p_two_spots, robot):
+    """
+    choosing ship placement for battleships
+                        
+    Args:
+        p_one_spots(lst): spots of the first player
+        p_two_spots(lst): spots of the second player or robot
+        robot(boolean): if robot or not
+    Returns:
+        none              
+    """
+    for i in range(4):
+        get_player_move(p_one_spots, "🚢", "pick")
+    print_board(p_one_spots)
+    
+    time.sleep(2)
+    os.system("cls")
+    if robot:
+        print("robot choosing spots...")
+        time.sleep(2)
+        for i in range(4):
+            while True:
+                row = random.randint(0, 4)
+                col = random.randint(0, 4)
+                if p_two_spots[row][col] != "🟦":
+                    continue
+                p_two_spots[row][col] = "🚢"
+                break
+    else:
+        print("Please give the screen to player 2.")
+        time.sleep(2)
+        print("Player 2, Place your 4 ships please. Hide the screen from player 1.")
+        for i in range(4):
+            get_player_move(p_two_spots, "🚢", "pick")
+        print_board(p_two_spots)
+    
+        time.sleep(2)
+        os.system("cls")
+
+
 def gameplay(p_one_play, p_two_play, p_one_spots, p_two_spots, p_one, p_two, p_one_hits, p_two_hits, against_player):
     """
     series of taking shots, displaying, board, and checking winner in game
@@ -204,23 +244,7 @@ def two_player(player_one_spots, player_two_spots, player_one_play, player_two_p
     Returns:
         none              
     """
-    print("Player 1, Place your 4 ships please. Hide the screen from player 2.")
-    
-    for i in range(4):
-        get_player_move(player_one_spots, "🚢", "pick")
-    print_board(player_one_spots)
-
-    time.sleep(2)
-    os.system("cls")
-    print("Please give the screen to player 2.")
-    time.sleep(2)
-    print("Player 2, Place your 4 ships please. Hide the screen from player 1.")
-    for i in range(4):
-        get_player_move(player_two_spots, "🚢", "pick")
-    print_board(player_two_spots)
-
-    time.sleep(2)
-    os.system("cls")
+    setup(player_one_spots, player_two_spots, False)
 
     player_one_hits = 0
     player_two_hits = 0
@@ -241,21 +265,7 @@ def robot_player(player_one_spots, robot_spots, player_one_play, robot_play):
     Returns:
         none              
     """
-    print("Place your 4 ships please.")
-    for i in range(4):
-        get_player_move(player_one_spots, "🚢", "pick")
-    print_board(player_one_spots)
-
-    print("robot choosing spots...")
-    time.sleep(2)
-    for i in range(4):
-        while True:
-            row = random.randint(0, 4)
-            col = random.randint(0, 4)
-            if robot_spots[row][col] != "🟦":
-                continue
-            robot_spots[row][col] = "🚢"
-            break
+    setup(player_one_spots, robot_spots, True)
 
     player_one_hits = 0
     robot_hits = 0
